@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <NoWarn>8603;8618;</NoWarn>
+    <NoWarn>8602;8603;8618;</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.6">
       <PrivateAssets>all</PrivateAssets>
