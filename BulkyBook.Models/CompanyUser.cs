@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BulkyBook.Models 
 {
-    public class CompanyUser: IdentityUser 
+    public class CompanyUser 
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
