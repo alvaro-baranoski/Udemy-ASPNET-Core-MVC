@@ -23,7 +23,7 @@ namespace BulkyBookWeb.Controllers
         public IActionResult Index()
         {
             Object[] opts = { new Category(), new CoverType() };
-            IEnumerable<Product> productList = _unitOfWork.ProductRepository.GetAll(opts);
+            IEnumerable<Product> productList = _unitOfWork.ProductRepository.GetAll(includeProperties: opts);
             return View(productList);
         }
 

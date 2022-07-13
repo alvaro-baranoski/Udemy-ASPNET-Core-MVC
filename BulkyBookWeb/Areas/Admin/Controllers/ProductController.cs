@@ -111,7 +111,7 @@ namespace BulkyBookWeb.Controllers
         public IActionResult GetAll()
         {
             Object[] props = { new Category(), new CoverType() };
-            var productList = _unitOfWork.ProductRepository.GetAll(props);
+            var productList = _unitOfWork.ProductRepository.GetAll(includeProperties: props);
             return Json(new { data = productList });
         }
 
