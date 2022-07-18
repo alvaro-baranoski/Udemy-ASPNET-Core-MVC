@@ -246,6 +246,9 @@ namespace BulkyBookWeb.Controllers
             if (cart.Count <= 1)
             {
                 _unitOfWork.ShoppingCartRepository.Remove(cart);
+                var count = _unitOfWork.ShoppingCartRepository.GetAll(
+                    u => u.ApplicationUserId == cart.ApplicationUserId).ToList().Count - 1;
+                HttpContext.Session.SetInt32(SD.SessionCart, count);
             }
             else
             {
