@@ -36,6 +36,15 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 });
 
+// Session config
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options => 
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(100);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -53,9 +62,11 @@ app.UseRouting();
 
 StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<String>();
 
-app.UseAuthentication();;
+app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapRazorPages();
 app.MapControllerRoute(
