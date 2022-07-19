@@ -73,7 +73,7 @@ namespace BulkyBookWeb.Controllers
                 if (file != null)
                 {
                     string fileName = Guid.NewGuid().ToString();
-                    var uploadPath = Path.Combine(wwwRootPath, @"assets\imgs\products\");
+                    var uploadPath = Path.Combine(wwwRootPath, @"assets/imgs/products/");
                     var extension = Path.GetExtension(file.FileName);
 
                     // Delete old image if updated
@@ -90,7 +90,7 @@ namespace BulkyBookWeb.Controllers
                     {
                         file.CopyTo(fileStreams);
                     }
-                    obj.Product.ImageUrl = @"\assets\imgs\products\" + fileName + extension;
+                    obj.Product.ImageUrl = @"/assets/imgs/products/" + fileName + extension;
                 }
 
                 // Add
