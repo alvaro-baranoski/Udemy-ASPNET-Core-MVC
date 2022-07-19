@@ -1,6 +1,6 @@
 ﻿@model BulkyBook.Models.ViewModels.ProductVM
 
-<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+<form id="product-form" method="post" asp-action="Upsert" enctype="multipart/form-data">
 
     <div class="row">
         <div class="col-10">
@@ -21,9 +21,11 @@
                     <span asp-validation-for="Product.Title" class="text-danger"></span>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-8">
                     <label asp-for="Product.Description"></label>
-                    <textarea asp-for="Product.Description" rows=3 class="form-control"></textarea>
+                    <textarea id="input-description" asp-for="Product.Description" hidden class="form-control"></textarea>
+                    <div id="container-editor" class="form-control">
+                    </div>
                     <span asp-validation-for="Product.Description" class="text-danger"></span>
                 </div>
 
@@ -125,6 +127,16 @@
                 return false;
             }
             return true;
+        }
+
+        const editor = document.getElementById("container-editor");
+        const quill = new Quill(editor, { theme: "snow" });
+        quill.container.firstChild.innerHTML = "@Html.Raw(Model.Product.Description)";
+
+        quill.on('text-change', update);
+        function update() {
+            let description = document.getElementById("input-description");
+            description.value = quill.container.firstChild.innerHTML;
         }
     </script>
 }
