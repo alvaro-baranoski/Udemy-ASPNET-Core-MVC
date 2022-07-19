@@ -1,0 +1,29 @@
+version: '3'
+
+networks:
+  election:
+
+services:
+
+  bulkybook:
+    build: ./
+    networks:
+      - election
+    ports:
+      - 82:80
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ConnectionStrings__DefaultConnection=Data Source=sqlserver; Initial Catalog=votes; User Id=sa;Password=Teste@admin123
+    depends_on:
+      - sqlserver
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Teste@admin123
+    ports:
+      - 1400:1433
+    networks:
+      - election
