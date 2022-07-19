@@ -64,7 +64,9 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             );
 
             // Stripe settings
-            var domain = "https://localhost:7289/";
+            string scheme = HttpContext.Request.Scheme;
+            string host = HttpContext.Request.Host.Value;
+            string domain = scheme + "://" + host + "/";
             var options = new SessionCreateOptions
             {
                 PaymentMethodTypes = new List<string>
