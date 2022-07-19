@@ -32,7 +32,7 @@ namespace BulkyBook.DataAccess.DbInitializer
                     _db.Database.Migrate();
                 }
             }
-            catch (Exception e)
+            catch
             {
 
             }
@@ -59,7 +59,14 @@ namespace BulkyBook.DataAccess.DbInitializer
 
                 var user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "admin@gmail.com");
 
-                await _userManager.AddToRoleAsync(user, SD.Role_Admin);
+                if (user != null)
+                {
+                    await _userManager.AddToRoleAsync(user, SD.Role_Admin);
+                }
+                else
+                {
+                    throw new Exception("Failed to create initial user!");
+                }
             }
             return;
         }
