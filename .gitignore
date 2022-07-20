@@ -7,6 +7,9 @@
 
 /BulkyBookWeb/wwwroot/assets/imgs/products
 .vscode/
+.terraform
+.terraform.lock.hcl
+terraform.tfstate.backup
 
 *.rsuser
 *.suo
