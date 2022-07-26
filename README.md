@@ -32,7 +32,7 @@ docker compose up --build
 For admin access, feel free to enter in contact me so that I can create a special account.
 
 ## Todo list
-- [ ] Add documentation to README
+- [ ] Integrate github actions for CI/CD
 - [ ] Create Terraform file for Azure
 - [ ] Image files storage
 - [ ] Create users and admins to demonstration
