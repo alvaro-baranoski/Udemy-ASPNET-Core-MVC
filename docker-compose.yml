@@ -6,7 +6,8 @@ networks:
 services:
 
   bulkybook:
-    build: ./
+    # build: ./
+    image: udemybulkycr.azurecr.io/bulkybook
     networks:
       - election
     ports:
@@ -14,16 +15,18 @@ services:
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ASPNETCORE_ConnectionStrings__DefaultConnection=Data Source=sqlserver; Initial Catalog=votes; User Id=sa;Password=Teste@admin123
-    depends_on:
-      - sqlserver
+      # - ASPNETCORE_ConnectionStrings__DefaultConnection=Data Source=sqlserver; Initial Catalog=votes; User Id=sa;Password=Teste@admin123
+      - ASPNETCORE_ConnectionStrings__DefaultConnection=Server=tcp:udemybulkysqlserver.database.windows.net,1433;Initial Catalog=udemybulkydb;Persist Security Info=False;User ID=4dm1n157r470r;Password=4-v3ry-53cr37-p455w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    
+  #   depends_on:
+  #     - sqlserver
 
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=Teste@admin123
-    ports:
-      - 1400:1433
-    networks:
-      - election
+  # sqlserver:
+  #   image: mcr.microsoft.com/mssql/server:2022-latest
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #     - SA_PASSWORD=Teste@admin123
+  #   ports:
+  #     - 1400:1433
+  #   networks:
+  #     - election
