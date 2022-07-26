@@ -68,7 +68,12 @@ namespace BulkyBookWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                // string wwwRootPath = _webHostEnvironment.WebRootPath;
+                string wwwRootPath = Environment.GetEnvironmentVariable("ImagePath");
+                if (wwwRootPath == null)
+                {
+                    wwwRootPath = _webHostEnvironment.WebRootPath;
+                }
 
                 // Save image file
                 if (file != null)
