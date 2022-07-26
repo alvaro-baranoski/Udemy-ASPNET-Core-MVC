@@ -12,8 +12,10 @@ This is a personal project originated from the Udemy Course [Complete guide to A
 - Stripe payment
 - Facebook login
 - Git & GitHub
+- GitHub Actions
 - Docker
 - Docker Compose
+- Azure
 - Terraform
 
 ## How to run
@@ -32,7 +34,4 @@ docker compose up --build
 For admin access, feel free to enter in contact me so that I can create a special account.
 
 ## Todo list
-- [ ] Integrate github actions for CI/CD
-- [ ] Create Terraform file for Azure
 - [ ] Image files storage
-- [ ] Create users and admins to demonstration
