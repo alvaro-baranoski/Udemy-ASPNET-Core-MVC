@@ -74,7 +74,7 @@ resource "azurerm_container_group" "example" {
     }
 
     ports {
-      port     = 90
+      port     = 80
       protocol = "TCP"
     }
   }
