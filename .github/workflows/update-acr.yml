@@ -19,7 +19,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      
       - uses: azure/docker-login@v1
         with:
           login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
@@ -27,8 +26,9 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
         name: Connect to Azure Container Registry (ACR)
 
-      #- name: Container build and push to a Azure Container Registry (ACR)
-      #- run: |
-      #    docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
-      #    docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
-      #  working-directory: ./Dockerfile
+      
+      - run: |
+          docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+          docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+        working-directory: ./Dockerfile
+        name: Container build and push to a Azure Container Registry (ACR)
