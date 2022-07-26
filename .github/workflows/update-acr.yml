@@ -1,8 +1,8 @@
+name: Update Container Registry Image
+
 env:
   REGISTRY_NAME: udemybulkycr
   APP_NAME: bulkybook
-
-name: Update Container Registry Image
 
 on:
   push:
@@ -19,8 +19,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - uses: azure/docker-login@v1
       - name: Connect to Azure Container Registry (ACR)
+      - uses: azure/docker-login@v1
         with:
           login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }} 
