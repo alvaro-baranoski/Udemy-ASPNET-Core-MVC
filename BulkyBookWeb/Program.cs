@@ -5,18 +5,25 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BulkyBook.Utility;
-using Stripe;
 using BulkyBook.DataAccess.DbInitializer;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
-    ));
+));
+
+// builder.Services.AddLogging(loggingBuilder => {
+//     loggingBuilder.AddSentry((sentryOptions => {
+//         sentryOptions.Dsn = "http://55280d26f19549c5b58bd43028b7b010@127.0.0.1:9000/2";
+//         sentryOptions.Debug = true;
+//         sentryOptions.TracesSampleRate = 1.0;
+//     }));
+// });
 
 builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
@@ -72,7 +79,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<String>();
-
 
 app.UseAuthentication();
 

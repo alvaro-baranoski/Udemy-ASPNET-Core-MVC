@@ -34,4 +34,8 @@ docker compose up --build
 For admin access, feel free to enter in contact me so that I can create a special account.
 
 ## Todo list
+- [ ] Hide secrets somehow
+- [ ] Hide the little bracket
 - [ ] Image files storage
+- [ ] K8S integration
+- [ ] NoSQL DB integration
