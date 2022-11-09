@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]
 ));
 
 // builder.Services.AddLogging(loggingBuilder => {
@@ -57,8 +57,8 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddAuthentication().AddFacebook(options => 
 {
-    options.AppId = "719833172679532";
-    options.AppSecret = "ddaa4fd804b24734a882c47d9fb91154";
+    options.AppId = builder.Configuration["Facebook:AppId"];
+    options.AppSecret = builder.Configuration["Facebook:AppSecret"];
 });
 
 var app = builder.Build();
