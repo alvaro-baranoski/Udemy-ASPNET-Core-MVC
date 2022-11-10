@@ -23,9 +23,13 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       # Local SQL
-      - ASPNETCORE_ConnectionStrings__DefaultConnection=Data Source=sqlserver; Initial Catalog=votes; User Id=sa;Password=Teste@admin123
+      - ASPNETCORE_ConnectionStrings__DefaultConnection=Data Source=sqlserver; Initial Catalog=votes; User Id=sa;Password=<Variable>
       # Azure SQL
       # - ASPNETCORE_ConnectionStrings__DefaultConnection=Server=tcp:udemybulkysqlserver.database.windows.net,1433;Initial Catalog=udemybulkydb;Persist Security Info=False;User ID=4dm1n157r470r;Password=4-v3ry-53cr37-p455w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+      - ASPNETCORE_Stripe__SecretKey=<Variable>
+      - ASPNETCORE_Stripe__PublishableKey=<Variable>
+      - ASPNETCORE_Facebook__AppId=<Variable>
+      - ASPNETCORE_Facebook__AppSecret=<Variable>
     depends_on:
       - sqlserver
 
@@ -33,7 +37,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=Teste@admin123
+      - SA_PASSWORD=<Variable>
     ports:
       - 1400:1433
     networks:

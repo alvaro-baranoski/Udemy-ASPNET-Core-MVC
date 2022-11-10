@@ -12,6 +12,7 @@
 .terraform.lock.hcl
 terraform.tfstate.backup
 terraform.tfstate
+secrets.txt
 
 *.rsuser
 *.suo
