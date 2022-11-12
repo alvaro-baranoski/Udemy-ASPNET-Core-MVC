@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  election:
+  bulkybooknetwork:
 
 volumes:
   bulkybookvolume:
@@ -14,7 +14,7 @@ services:
     # Azure Image
     # image: udemybulkycr.azurecr.io/bulkybook
     networks:
-      - election
+      - bulkybooknetwork
     ports:
       - 82:80
     restart: always
@@ -41,4 +41,4 @@ services:
     ports:
       - 1400:1433
     networks:
-      - election
+      - bulkybooknetwork
