@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONNECTION_STRING="<Variable>"
+# To run: source ./init.sh 
 STRIPE_SECRET_KEY="<Variable>"
 STRIPE_PUB_KEY="<Variable>"
 FB_APP_ID="<Variable>"

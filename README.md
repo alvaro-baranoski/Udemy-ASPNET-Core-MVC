@@ -34,6 +34,5 @@ docker compose up --build
 For admin access, feel free to enter in contact me so that I can create a special account.
 
 ## Todo list
-- [ ] Image files storage
+- [ ] Fix Upsert book page
 - [ ] K8S integration
-- [ ] NoSQL DB integration

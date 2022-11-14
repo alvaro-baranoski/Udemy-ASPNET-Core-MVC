@@ -42,3 +42,6 @@ services:
       - 1400:1433
     networks:
       - bulkybooknetwork
+    user: root
+    volumes:
+      - bulkybookvolume:/var/opt/mssql

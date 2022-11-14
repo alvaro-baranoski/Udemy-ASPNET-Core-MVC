@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using BulkyBook.DataAccess;
-using BulkyBook.DataAccess.Repository.IRepository;
+﻿using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
 using BulkyBook.Utility;
@@ -81,6 +79,14 @@ namespace BulkyBookWeb.Controllers
                     string fileName = Guid.NewGuid().ToString();
                     var uploadPath = Path.Combine(wwwRootPath, @"assets/imgs/products/");
                     var extension = Path.GetExtension(file.FileName);
+
+                    Console.WriteLine("Criando Diretório...");
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                        Console.WriteLine("Diretório criado");
+                        Console.WriteLine(Directory.GetCreationTime(uploadPath));
+                    }
 
                     // Delete old image if updated
                     if (obj.Product.ImageUrl is not null)
